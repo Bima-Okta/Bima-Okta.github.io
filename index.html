@@ -567,10 +567,10 @@
               <canvas id="trainCanvas"></canvas>
               <div class="train-game__overlay" id="trainOverlay">
                 <h4>Mainkan sambil mampir!</h4>
-                <p>Bantu kereta melintasi rel dan hindari sinyal palang yang menutup. Ketuk / klik / tekan Spasi untuk melompat.</p>
+                <p>Bantu kereta melintasi rel dan hindari sinyal palang yang menutup. Tahan klik / sentuh / Spasi lebih lama untuk lompat lebih tinggi, dan tekan sekali lagi di udara untuk double jump!</p>
               </div>
             </div>
-            <p class="train-game__hint">Klik area di atas atau tekan [Space] untuk lompat</p>
+            <p class="train-game__hint">Tahan untuk lompat tinggi, klik/spasi sekali lagi di udara untuk double jump</p>
           </div>
         </div>
       </div>
@@ -735,7 +735,13 @@
       };
 
       const GRAVITY = 0.0028;
-      const JUMP_VELOCITY = -0.62;
+      const JUMP_VELOCITY = -0.42;     // tolakan awal saat lompat
+      const HOLD_LIFT = 0.00105;       // gaya angkat tambahan tiap ms selama tombol ditahan
+      const MAX_HOLD_MS = 260;         // lama maksimum tahan yang masih berefek
+      const MAX_JUMPS = 2;             // jumlah lompatan beruntun yang diizinkan (double jump)
+      let isHolding = false;
+      let holdElapsed = 0;
+      let jumpsUsed = 0;
 
       let obstacles = [];
       let speed = 0;
@@ -759,6 +765,9 @@
         spawnTimer = 0;
         score = 0;
         gameOver = false;
+        isHolding = false;
+        holdElapsed = 0;
+        jumpsUsed = 0;
         scoreEl.textContent = '0';
       }
 
@@ -772,7 +781,7 @@
         });
       }
 
-      function jump() {
+      function startHold() {
         if (gameOver) {
           startGame();
           return;
@@ -781,10 +790,17 @@
           startGame();
           return;
         }
-        if (train.onGround) {
+        if (jumpsUsed < MAX_JUMPS) {
           train.vy = JUMP_VELOCITY;
           train.onGround = false;
+          isHolding = true;
+          holdElapsed = 0;
+          jumpsUsed += 1;
         }
+      }
+
+      function releaseHold() {
+        isHolding = false;
       }
 
       function startGame() {
@@ -808,6 +824,14 @@
       function update(dt) {
         // physics in px/ms-ish, scaled by dt
         train.vy += GRAVITY * dt;
+
+        // tahan tombol selagi melompat = dorongan ekstra ke atas, dibatasi waktu maksimum
+        if (isHolding && !train.onGround && holdElapsed < MAX_HOLD_MS) {
+          const step = Math.min(dt, MAX_HOLD_MS - holdElapsed);
+          train.vy -= HOLD_LIFT * step;
+          holdElapsed += step;
+        }
+
         train.y += train.vy * dt;
 
         const floor = groundY() - train.h;
@@ -815,6 +839,9 @@
           train.y = floor;
           train.vy = 0;
           train.onGround = true;
+          isHolding = false;
+          holdElapsed = 0;
+          jumpsUsed = 0;
         }
 
         speed += 0.000006 * dt; // gradually speed up
@@ -964,17 +991,35 @@
         draw();
       }
 
-      // input handlers
-      canvas.addEventListener('click', jump);
-      overlay.addEventListener('click', jump);
+      // input handlers — tekan untuk mulai lompat, lepas untuk berhenti naik
+      canvas.addEventListener('mousedown', startHold);
+      window.addEventListener('mouseup', releaseHold);
+
+      canvas.addEventListener('touchstart', function (e) {
+        e.preventDefault();
+        startHold();
+      }, { passive: false });
+      window.addEventListener('touchend', releaseHold);
+
+      overlay.addEventListener('mousedown', startHold);
+      overlay.addEventListener('touchstart', function (e) {
+        e.preventDefault();
+        startHold();
+      }, { passive: false });
+
       window.addEventListener('keydown', function (e) {
         if (e.code === 'Space' || e.key === ' ') {
           const rect = canvas.getBoundingClientRect();
           const inView = rect.top < window.innerHeight && rect.bottom > 0;
           if (inView) {
             e.preventDefault();
-            jump();
+            if (!isHolding) startHold();
           }
+        }
+      });
+      window.addEventListener('keyup', function (e) {
+        if (e.code === 'Space' || e.key === ' ') {
+          releaseHold();
         }
       });
 
