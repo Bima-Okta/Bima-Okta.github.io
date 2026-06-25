@@ -1,0 +1,616 @@
+<html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bima Oktaviansyah Putra — Portofolio</title>
+  <meta name="description" content="Portofolio Bima Oktaviansyah Putra — Lulusan Teknik Elektronika Polines.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE STYLES ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #121614; /* Deep charcoal charcoal dengan sentuhan sage */
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== UTILITIES ===== */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .btn--primary {
+      background-color: #87a987; /* Soft Sage Green */
+      color: #121614;
+    }
+    .btn--primary:hover {
+      background-color: #a3c2a3;
+    }
+    .btn--ghost {
+      border: 1px solid #4a554a;
+      color: #87a987;
+    }
+    .btn--ghost:hover {
+      background-color: rgba(135, 169, 135, 0.1);
+    }
+    .btn--block {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    .section__eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      color: #87a987;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .section__title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 32px;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(18, 22, 20, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      border-bottom: 1px solid #1a221e;
+    }
+    .navbar__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+    .navbar__logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 20px;
+      color: #ffffff;
+    }
+    .navbar__logo span {
+      color: #87a987;
+    }
+    .navbar__nav {
+      display: flex;
+      gap: 32px;
+    }
+    .navbar__link {
+      font-size: 14px;
+      font-weight: 500;
+      color: #94a3b8;
+      transition: color 0.3s;
+    }
+    .navbar__link:hover {
+      color: #87a987;
+    }
+
+    /* ===== HERO / TERMINAL ===== */
+    .hero {
+      padding: 140px 0 80px 0;
+    }
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero__eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      color: #4a5a50;
+      margin-bottom: 12px;
+    }
+    .hero__title {
+      font-size: 42px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero__title span {
+      color: #87a987;
+    }
+    .hero__subtitle {
+      font-size: 16px;
+      color: #94a3b8;
+      margin-bottom: 32px;
+      max-width: 540px;
+    }
+    .hero__actions {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .hero__stats {
+      display: flex;
+      gap: 32px;
+      border-top: 1px solid #1a221e;
+      padding-top: 24px;
+    }
+    .hero__stats dt {
+      font-size: 12px;
+      color: #4a5a50;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+    }
+    .hero__stats dd {
+      font-size: 15px;
+      font-weight: 600;
+      color: #cbd5e1;
+    }
+
+    /* Container Gambar Terminal */
+    .hero__image-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero__terminal-img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      object-fit: contain;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      padding: 80px 0;
+      border-top: 1px solid #1a221e;
+    }
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: flex-start;
+    }
+    .about__bio-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .about__profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid #87a987;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .about__bio p {
+      color: #94a3b8;
+      margin-bottom: 16px;
+    }
+    .about__bio strong {
+      color: #ffffff;
+    }
+    .about__meta {
+      list-style: none;
+      background-color: #161b18;
+      border: 1px solid #232a26;
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .about__meta li {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #232a26;
+      font-size: 14px;
+    }
+    .about__meta li:last-child {
+      border-bottom: none;
+    }
+    .about__meta span {
+      color: #64748b;
+    }
+    .about__meta strong {
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    /* ===== SKILLS ===== */
+    .skills {
+      padding: 80px 0;
+      border-top: 1px solid #1a221e;
+    }
+    .skills__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .skills__category {
+      background-color: #161b18;
+      border: 1px solid #232a26;
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .skills__category h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      border-left: 3px solid #87a987;
+      padding-left: 10px;
+    }
+    .skills__category ul {
+      list-style: none;
+    }
+    .skills__category li {
+      font-size: 14px;
+      color: #94a3b8;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skills__category li::before {
+      content: "→";
+      color: #87a987;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ===== PROJECTS ===== */
+    .projects {
+      padding: 80px 0;
+      border-top: 1px solid #1a221e;
+    }
+    .projects__grid {
+      display: block; 
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .project-card {
+      background-color: #161b18;
+      border: 1px solid #232a26;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: #34423a;
+    }
+    .project-card__content {
+      padding: 32px;
+    }
+    .project-card__tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background-color: rgba(135, 169, 135, 0.1);
+      color: #87a987;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .project-card h3 {
+      font-size: 22px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .project-card p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 24px;
+      text-align: justify;
+    }
+    .project-card__tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .project-card__tech span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background-color: #1a211d;
+      color: #cbd5e1;
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid #232a26;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      padding: 80px 0;
+      border-top: 1px solid #1a221e;
+    }
+    .contact__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+    }
+    .contact__desc {
+      color: #94a3b8;
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+    .contact__social {
+      list-style: none;
+      display: flex;
+      gap: 16px;
+    }
+    .contact__social a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #87a987;
+      border: 1px solid #232a26;
+      padding: 8px 16px;
+      border-radius: 6px;
+      background-color: #161b18;
+      transition: all 0.3s;
+    }
+    .contact__social a:hover {
+      background-color: #87a987;
+      color: #121614;
+    }
+    .contact__form {
+      background-color: #161b18;
+      border: 1px solid #232a26;
+      padding: 32px;
+      border-radius: 8px;
+    }
+    .form__group {
+      margin-bottom: 20px;
+    }
+    .form__group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+    .form__group input,
+    .form__group textarea {
+      width: 100%;
+      background-color: #121614;
+      border: 1px solid #232a26;
+      border-radius: 6px;
+      padding: 12px;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+    .form__group input:focus,
+    .form__group textarea:focus {
+      outline: none;
+      border-color: #87a987;
+    }
+    .form__status {
+      margin-top: 12px;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      border-top: 1px solid #1a221e;
+      padding: 32px 0;
+      font-size: 13px;
+      color: #64748b;
+      text-align: center;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero__grid, .about__grid, .contact__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .skills__grid {
+        grid-template-columns: 1fr;
+      }
+      .navbar__nav {
+        display: none; 
+      }
+      .hero__title {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="#home" class="navbar__logo"><span>Bima Okta</span></a>
+      <nav class="navbar__nav" id="navMenu">
+        <a href="#home" class="navbar__link">Home</a>
+        <a href="#about" class="navbar__link">About</a>
+        <a href="#skills" class="navbar__link">Skills</a>
+        <a href="#projects" class="navbar__link">Project</a>
+        <a href="#contact" class="navbar__link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="hero__eyebrow">// electrical engineering &amp; embedded systems</p>
+          <h1 class="hero__title">Halo, saya <span>Bima Oktaviansyah</span>.</h1>
+          <p class="hero__subtitle">Lulusan D3 Teknik Elektronika dari Politeknik Negeri Semarang. Berfokus pada sistem tertanam (embedded systems), kontrol otomatisasi mikrokontroler, dan pengembangan fungsional.</p>
+          <div class="hero__actions">
+            <a href="#projects" class="btn btn--primary">Lihat Project Utama</a>
+            <a href="https://wa.me/6282223413967" class="btn btn--ghost">Hubungi Saya</a>
+          </div>
+          <dl class="hero__stats" id="heroStats">
+            <div>
+              <dt>Lokasi</dt>
+              <dd>Semarang, Jawa Tengah</dd>
+            </div>
+            <div>
+              <dt>Kewarganegaraan</dt>
+              <dd>Indonesia</dd>
+            </div>
+          </dl>
+        </div>
+
+        
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <p class="section__eyebrow">01 · About</p>
+        <h2 class="section__title">Tentang Saya</h2>
+        <div class="about__grid">
+          <div class="about__bio-wrapper">
+            <img src="foto-bima.jpeg" alt="Bima Oktaviansyah Putra" class="about__profile-img" onerror="this.src='foto-bima.jpeg'">
+            
+            <div class="about__bio">
+              <p>Saya memiliki landasan teknis yang kuat dalam mendesain rangkaian elektronik serta merancang prototipe fungsional otomatis berbasis mikrokontroler.</p>
+              <p>Selain fokus akademis, saya memiliki pengalaman magang di departemen <strong>Preventive Maintenance</strong> industri skala besar seperti <strong>PT. Phapros Tbk</strong> dan <strong>PT. Panasonic Manufacturing Indonesia</strong>, yang mengasah akurasi kerja, troubleshooting sistem, dan kepatuhan spesifikasi teknis ketat.</p>
+            </div>
+          </div>
+          <ul class="about__meta">
+            <li><span>Lokasi</span><strong>Semarang, Jawa Tengah</strong></li>
+            <li><span>Email</span><strong>bimaaop@gmail.com</strong></li>
+            <li><span>Almamater</span><strong>Politeknik Negeri Semarang</strong></li>
+            <li><span>Jurusan</span><strong>D3 Teknik Elektronika</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" id="skills">
+      <div class="container">
+        <p class="section__eyebrow">02 · Skills</p>
+        <h2 class="section__title">Keahlian Teknis</h2>
+        <div class="skills__grid">
+          <div class="skills__category">
+            <h3>Hardware &amp; Embedded</h3>
+            <ul>
+              <li>Pemrograman Mikrokontroler</li>
+              <li>Sistem Tertanam (Embedded Systems)</li>
+              <li>Integrasi Sensor Otomatis</li>
+              <li>Membaca Skematik Diagram</li>
+            </ul>
+          </div>
+          <div class="skills__category">
+            <h3>Maintenance &amp; Tools</h3>
+            <ul>
+              <li>Troubleshooting Elektronik</li>
+              <li>Pengukuran Alat Ukur Listrik</li>
+              <li>Pemeliharaan Preventif Mesin</li>
+              <li>Desain Kreatif &amp; Canva</li>
+            </ul>
+          </div>
+          <div class="skills__category">
+            <h3>Soft Skills</h3>
+            <ul>
+              <li>Problem Solving Terarah</li>
+              <li>Kerja Sama Tim (Teamwork)</li>
+              <li>Komunikasi Efektif</li>
+              <li>Berpikir Analitis</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <div class="container">
+        <p class="section__eyebrow">03 · Main Project</p>
+        <h2 class="section__title">Proyek Utama Pengembangan</h2>
+
+        <div class="projects__grid">
+          <article class="project-card">
+            <div class="project-card__content">
+              <span class="project-card__tag">Proyek Kuliah</span>
+              <h3>Sistem Pencucian &amp; Pengeringan Tangan Otomatis</h3>
+              <p>Rancangan alat sanitasi modern berbasis pintar yang mengintegrasikan kendali otomatisasi penuh menggunakan kontrol utama Arduino Uno. Sistem memanfaatkan presisi pembacaan jarak dari Sensor Ultrasonik untuk mengaktifkan rangkaian aktuator air (pompa mini) sabun secara higienis tanpa sentuhan tangan, serta menggerakkan kipas pengering secara sinkron sekaligus mengintegrasikan pelaporan status via teknologi Internet of Things (IoT).</p>
+              <div class="project-card__tech">
+                <span>Arduino Uno</span><span>Sensor Ultrasonik</span><span>IoT Blynk / ESP8266</span><span>Pompa &amp; Kipas DC</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact__grid">
+        <div>
+          <p class="section__eyebrow">04 · Contact</p>
+          <h2 class="section__title">Mari Berdiskusi</h2>
+          <p class="contact__desc">Punya kebutuhan proyek implementasi sirkuit, integrasi Internet of Things, atau kolaborasi manufaktur? Silakan hubungi saya kapan saja.</p>
+          <div class="contact__social">
+            <a href="mailto:bimaaop@gmail.com">Kirim Email</a>
+            <a href="https://drive.google.com/file/d/1dN3TD97unBFn_DZsMPMtG9pOjbT2Culm/view?usp=sharing" target="_blank">Lihat CV</a>
+          </div>
+        </div>
+
+        <form class="contact__form" id="contactForm">
+          <div class="form__group">
+            <label for="name">Nama</label>
+            <input type="text" id="name" placeholder="Nama Anda" required="">
+          </div>
+          <div class="form__group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="nama@email.com" required="">
+          </div>
+          <div class="form__group">
+            <label for="message">Pesan</label>
+            <textarea id="message" rows="4" placeholder="Tulis hal yang ingin didiskusikan..." required=""></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block">Kirim Pesan</button>
+          <p class="form__status" id="formStatus"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Bima Oktaviansyah Putra. Built with professional layout structure.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      status.style.color = '#87a987';
+      status.innerText = "Terima kasih! Pesan Anda simulasi berhasil terkirim.";
+      this.reset();
+    });
+  </script>
+
+</body></html>
