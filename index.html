@@ -120,9 +120,12 @@
     }
     .hero__grid {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: 1fr;
       gap: 48px;
       align-items: center;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: left;
     }
     .hero__eyebrow {
       font-family: 'JetBrains Mono', monospace;
@@ -166,97 +169,6 @@
       font-size: 15px;
       font-weight: 600;
       color: #cbd5e1;
-    }
-
-    /* Container Gambar Terminal */
-    .hero__image-wrapper {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .hero__terminal-img {
-      width: 100%;
-      max-width: 500px;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      object-fit: contain;
-    }
-
-    /* ===== HERO TRAIN GAME ===== */
-    .train-game {
-      width: 100%;
-      background-color: #161b18;
-      border: 1px solid #232a26;
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
-    .train-game__header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .train-game__title {
-      font-size: 13px;
-      color: #87a987;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .train-game__score {
-      font-size: 13px;
-      color: #cbd5e1;
-    }
-    .train-game__score span {
-      color: #87a987;
-      font-weight: 700;
-    }
-    .train-game__canvas-wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 5 / 3;
-      border-radius: 8px;
-      overflow: hidden;
-      background: linear-gradient(180deg, #1a2a22 0%, #121614 100%);
-      border: 1px solid #232a26;
-    }
-    #trainCanvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-      touch-action: none;
-      cursor: pointer;
-    }
-    .train-game__overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: rgba(18, 22, 20, 0.78);
-      text-align: center;
-      padding: 16px;
-    }
-    .train-game__overlay h4 {
-      color: #ffffff;
-      font-size: 16px;
-    }
-    .train-game__overlay p {
-      color: #94a3b8;
-      font-size: 13px;
-      max-width: 300px;
-    }
-    .train-game__hint {
-      margin-top: 10px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: #4a5a50;
-      text-align: center;
     }
 
     /* ===== ABOUT ===== */
@@ -314,6 +226,79 @@
     .about__meta strong {
       color: #e2e8f0;
       font-weight: 500;
+    }
+
+    /* ===== TIMELINE (PENDIDIKAN & PENGALAMAN) ===== */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .timeline__item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid #232a26;
+    }
+    .timeline__item:first-child {
+      padding-top: 0;
+    }
+    .timeline__item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .timeline__period {
+      font-family: 'JetBrains Mono', monospace;
+      color: #87a987;
+      font-size: 13px;
+      padding-top: 2px;
+    }
+    .timeline__content h3 {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .timeline__org {
+      color: #87a987;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .timeline__org-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .timeline__org-row .timeline__org {
+      margin-bottom: 0;
+    }
+    .timeline__logo {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      background-color: #ffffff;
+      border-radius: 6px;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+    .timeline__content p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+    .timeline__content ul {
+      margin-top: 8px;
+      padding-left: 18px;
+      color: #94a3b8;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .timeline__content ul li {
+      list-style: disc;
     }
 
     /* ===== SKILLS ===== */
@@ -510,6 +495,10 @@
       .skills__grid {
         grid-template-columns: 1fr;
       }
+      .timeline__item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
       .navbar__nav {
         display: none; 
       }
@@ -527,6 +516,8 @@
       <nav class="navbar__nav" id="navMenu">
         <a href="#home" class="navbar__link">Home</a>
         <a href="#about" class="navbar__link">About</a>
+        <a href="#education" class="navbar__link">Pendidikan</a>
+        <a href="#experience" class="navbar__link">Pengalaman</a>
         <a href="#skills" class="navbar__link">Skills</a>
         <a href="#projects" class="navbar__link">Project</a>
         <a href="#contact" class="navbar__link">Contact</a>
@@ -557,22 +548,6 @@
           </dl>
         </div>
 
-        <div class="hero__image-wrapper">
-          <div class="train-game">
-            <div class="train-game__header">
-              <span class="train-game__title">🚆 Rel Lari Cepat</span>
-              <span class="train-game__score">Skor: <span id="trainScore">0</span></span>
-            </div>
-            <div class="train-game__canvas-wrap">
-              <canvas id="trainCanvas"></canvas>
-              <div class="train-game__overlay" id="trainOverlay">
-                <h4>Mainkan sambil mampir!</h4>
-                <p>Bantu kereta melintasi rel dan hindari sinyal palang yang menutup. Tahan klik / sentuh / Spasi lebih lama untuk lompat lebih tinggi, dan tekan sekali lagi di udara untuk double jump!</p>
-              </div>
-            </div>
-            <p class="train-game__hint">Tahan untuk lompat tinggi, klik/spasi sekali lagi di udara untuk double jump</p>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -585,12 +560,13 @@
             <img src="foto-bima.jpeg" alt="Bima Oktaviansyah Putra" class="about__profile-img" onerror="this.src='foto-bima.jpeg'">
             
             <div class="about__bio">
-              <p>Saya memiliki landasan teknis yang kuat dalam mendesain rangkaian elektronik serta merancang prototipe fungsional otomatis berbasis mikrokontroler.</p>
-              <p>Selain fokus akademis, saya memiliki pengalaman magang di departemen <strong>Preventive Maintenance</strong> industri skala besar seperti <strong>PT. Phapros Tbk</strong> dan <strong>PT. Panasonic Manufacturing Indonesia</strong>, yang mengasah akurasi kerja, troubleshooting sistem, dan kepatuhan spesifikasi teknis ketat.</p>
+              <p>Saya adalah lulusan Teknik Elektronika Polines yang berdedikasi dan memiliki pengalaman praktis dalam pemeliharaan preventif di PT Phapros Tbk serta PT Panasonic Manufacturing Indonesia. Menguasai pemrograman komponen berbasis Arduino, perbaikan rangkaian elektronik, dan pengoperasian alat ukur. Saya adalah individu yang komunikatif dan siap memberikan kontribusi nyata dalam efisiensi lini produksi maupun tim teknis.</p>
             </div>
           </div>
           <ul class="about__meta">
+            <li><span>Nama</span><strong>Bima Oktaviansyah Putra</strong></li>
             <li><span>Lokasi</span><strong>Semarang, Jawa Tengah</strong></li>
+            <li><span>Telepon</span><strong>+62 819-0172-3558</strong></li>
             <li><span>Email</span><strong>bimaaop@gmail.com</strong></li>
             <li><span>Almamater</span><strong>Politeknik Negeri Semarang</strong></li>
             <li><span>Jurusan</span><strong>D3 Teknik Elektronika</strong></li>
@@ -599,9 +575,80 @@
       </div>
     </section>
 
+    <section class="education" id="education">
+      <div class="container">
+        <p class="section__eyebrow">02 · Pendidikan</p>
+        <h2 class="section__title">Riwayat Pendidikan</h2>
+        <div class="timeline">
+          <div class="timeline__item">
+            <div class="timeline__period">2023 – 2026</div>
+            <div class="timeline__content">
+              <h3>D3 Teknik Elektronika</h3>
+              <div class="timeline__org-row">
+                <img src="logo_polines.png" alt="Logo Politeknik Negeri Semarang" class="timeline__logo">
+                <p class="timeline__org">Politeknik Negeri Semarang (Polines)</p>
+              </div>
+              <p>Menempuh pendidikan vokasi dengan fokus pada sistem tertanam (embedded systems), rangkaian elektronika, dan kontrol otomatisasi berbasis mikrokontroler.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__period">2020 – 2023</div>
+            <div class="timeline__content">
+              <h3>Teknik Audio Video</h3>
+              <div class="timeline__org-row">
+                <img src="logo_smk4.jpg" alt="Logo SMK Negeri 4 Semarang" class="timeline__logo">
+                <p class="timeline__org">SMK Negeri 4 Semarang</p>
+              </div>
+              <p>Mempelajari dasar-dasar elektronika, perangkat audio video, serta praktik perbaikan dan perawatan peralatan elektronik.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="container">
+        <p class="section__eyebrow">03 · Pengalaman</p>
+        <h2 class="section__title">Pengalaman Kerja</h2>
+        <div class="timeline">
+          <div class="timeline__item">
+            <div class="timeline__period">Magang</div>
+            <div class="timeline__content">
+              <h3>Magang Departemen Pemeliharaan Preventif (Preventive Maintenance)</h3>
+              <div class="timeline__org-row">
+                <img src="logo_phapros.png" alt="Logo PT. Phapros Tbk" class="timeline__logo">
+                <p class="timeline__org">PT. Phapros Tbk</p>
+              </div>
+              <ul>
+                <li>Melakukan pemeliharaan preventif untuk menjaga kinerja dan keandalan mesin-mesin produksi.</li>
+                <li>Membantu pemeliharaan dan pemecahan masalah (troubleshooting) pada mesin yang mengalami kendala.</li>
+                <li>Berpartisipasi dalam inspeksi rutin dan pengembangan mesin produksi untuk meningkatkan efisiensi.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__period">Magang</div>
+            <div class="timeline__content">
+              <h3>Magang Pemeliharaan Preventif Audio (Audio Preventive)</h3>
+              <div class="timeline__org-row">
+                <img src="logo_panasonic.png" alt="Logo PT. Panasonic Manufacturing Indonesia" class="timeline__logo">
+                <p class="timeline__org">PT. Panasonic Manufacturing Indonesia</p>
+              </div>
+              <ul>
+                <li>Melakukan perekatan (bonding) PCB berpresisi tinggi untuk unit AC menggunakan perekat epoksi khusus.</li>
+                <li>Memastikan kualitas dan daya tahan sambungan listrik melalui proses perekatan yang terstandardisasi.</li>
+                <li>Menjaga efisiensi produksi dan mematuhi spesifikasi teknis yang ketat untuk perakitan elektronik.</li>
+                <li>Berkolaborasi dengan tim manufaktur untuk memantau dan mengatasi masalah pada proses lini perakitan.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="skills" id="skills">
       <div class="container">
-        <p class="section__eyebrow">02 · Skills</p>
+        <p class="section__eyebrow">04 · Skills</p>
         <h2 class="section__title">Keahlian Teknis</h2>
         <div class="skills__grid">
           <div class="skills__category">
@@ -637,7 +684,7 @@
 
     <section class="projects" id="projects">
       <div class="container">
-        <p class="section__eyebrow">03 · Main Project</p>
+        <p class="section__eyebrow">05 · Main Project</p>
         <h2 class="section__title">Proyek Utama Pengembangan</h2>
 
         <div class="projects__grid">
@@ -658,7 +705,7 @@
     <section class="contact" id="contact">
       <div class="container contact__grid">
         <div>
-          <p class="section__eyebrow">04 · Contact</p>
+          <p class="section__eyebrow">06 · Contact</p>
           <h2 class="section__title">Mari Berdiskusi</h2>
           <p class="contact__desc">Punya kebutuhan proyek implementasi sirkuit, integrasi Internet of Things, atau kolaborasi manufaktur? Silakan hubungi saya kapan saja.</p>
           <div class="contact__social">
@@ -703,340 +750,5 @@
     });
   </script>
 
-  <script>
-    (function () {
-      const canvas = document.getElementById('trainCanvas');
-      const overlay = document.getElementById('trainOverlay');
-      const scoreEl = document.getElementById('trainScore');
-      if (!canvas) return;
-
-      const ctx = canvas.getContext('2d');
-      let W, H, DPR;
-
-      function resize() {
-        DPR = window.devicePixelRatio || 1;
-        const rect = canvas.getBoundingClientRect();
-        W = rect.width;
-        H = rect.height;
-        canvas.width = W * DPR;
-        canvas.height = H * DPR;
-        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      }
-
-      const groundY = () => H * 0.78;
-
-      const train = {
-        x: 0,
-        y: 0,
-        w: 54,
-        h: 30,
-        vy: 0,
-        onGround: true
-      };
-
-      const GRAVITY = 0.0028;
-      const JUMP_VELOCITY = -0.42;     // tolakan awal saat lompat
-      const HOLD_LIFT = 0.00105;       // gaya angkat tambahan tiap ms selama tombol ditahan
-      const MAX_HOLD_MS = 260;         // lama maksimum tahan yang masih berefek
-      const MAX_JUMPS = 2;             // jumlah lompatan beruntun yang diizinkan (double jump)
-      let isHolding = false;
-      let holdElapsed = 0;
-      let jumpsUsed = 0;
-
-      let obstacles = [];
-      let speed = 0;
-      let baseSpeed = 0.18;
-      let spawnTimer = 0;
-      let score = 0;
-      let running = false;
-      let gameOver = false;
-      let rafId = null;
-      let lastTime = null;
-
-      function resetGame() {
-        train.x = 40;
-        train.h = 30;
-        train.w = 54;
-        train.y = groundY() - train.h;
-        train.vy = 0;
-        train.onGround = true;
-        obstacles = [];
-        speed = baseSpeed;
-        spawnTimer = 0;
-        score = 0;
-        gameOver = false;
-        isHolding = false;
-        holdElapsed = 0;
-        jumpsUsed = 0;
-        scoreEl.textContent = '0';
-      }
-
-      function spawnObstacle() {
-        const h = 28 + Math.random() * 26;
-        obstacles.push({
-          x: W + 20,
-          w: 18,
-          h: h,
-          passed: false
-        });
-      }
-
-      function startHold() {
-        if (gameOver) {
-          startGame();
-          return;
-        }
-        if (!running) {
-          startGame();
-          return;
-        }
-        if (jumpsUsed < MAX_JUMPS) {
-          train.vy = JUMP_VELOCITY;
-          train.onGround = false;
-          isHolding = true;
-          holdElapsed = 0;
-          jumpsUsed += 1;
-        }
-      }
-
-      function releaseHold() {
-        isHolding = false;
-      }
-
-      function startGame() {
-        resetGame();
-        running = true;
-        overlay.style.display = 'none';
-        lastTime = null;
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(loop);
-      }
-
-      function endGame() {
-        running = false;
-        gameOver = true;
-        overlay.innerHTML =
-          '<h4>Kereta menabrak palang! 🚧</h4>' +
-          '<p>Skor kamu: ' + score + '. Klik atau tekan Spasi untuk coba lagi.</p>';
-        overlay.style.display = 'flex';
-      }
-
-      function update(dt) {
-        // physics in px/ms-ish, scaled by dt
-        train.vy += GRAVITY * dt;
-
-        // tahan tombol selagi melompat = dorongan ekstra ke atas, dibatasi waktu maksimum
-        if (isHolding && !train.onGround && holdElapsed < MAX_HOLD_MS) {
-          const step = Math.min(dt, MAX_HOLD_MS - holdElapsed);
-          train.vy -= HOLD_LIFT * step;
-          holdElapsed += step;
-        }
-
-        train.y += train.vy * dt;
-
-        const floor = groundY() - train.h;
-        if (train.y >= floor) {
-          train.y = floor;
-          train.vy = 0;
-          train.onGround = true;
-          isHolding = false;
-          holdElapsed = 0;
-          jumpsUsed = 0;
-        }
-
-        speed += 0.000006 * dt; // gradually speed up
-        spawnTimer -= dt;
-        if (spawnTimer <= 0) {
-          spawnObstacle();
-          spawnTimer = 900 + Math.random() * 700 - Math.min(speed * 300, 400);
-          if (spawnTimer < 420) spawnTimer = 420;
-        }
-
-        for (let i = obstacles.length - 1; i >= 0; i--) {
-          const o = obstacles[i];
-          o.x -= speed * dt;
-
-          if (!o.passed && o.x + o.w < train.x) {
-            o.passed = true;
-            score += 1;
-            scoreEl.textContent = String(score);
-          }
-
-          if (o.x + o.w < -20) {
-            obstacles.splice(i, 1);
-            continue;
-          }
-
-          const trainBox = { x: train.x + 6, y: train.y + 4, w: train.w - 12, h: train.h - 6 };
-          const obsBox = { x: o.x, y: groundY() - o.h, w: o.w, h: o.h };
-
-          const hit =
-            trainBox.x < obsBox.x + obsBox.w &&
-            trainBox.x + trainBox.w > obsBox.x &&
-            trainBox.y < obsBox.y + obsBox.h &&
-            trainBox.y + trainBox.h > obsBox.y;
-
-          if (hit) {
-            endGame();
-            return;
-          }
-        }
-      }
-
-      function drawBackground() {
-        ctx.clearRect(0, 0, W, H);
-
-        // rel kereta (garis horizontal + bantalan)
-        const gy = groundY();
-        ctx.strokeStyle = '#2a332d';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(0, gy);
-        ctx.lineTo(W, gy);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(0, gy + 6);
-        ctx.lineTo(W, gy + 6);
-        ctx.stroke();
-
-        ctx.fillStyle = '#1f2620';
-        const sleeperSpacing = 28;
-        const offset = (performance.now() / 6) % sleeperSpacing;
-        for (let x = -offset; x < W; x += sleeperSpacing) {
-          ctx.fillRect(x, gy + 6, 16, 6);
-        }
-
-        // background hint hills
-        ctx.fillStyle = '#1a221e';
-        ctx.fillRect(0, gy + 12, W, H - (gy + 12));
-      }
-
-      function drawTrain() {
-        const x = train.x;
-        const y = train.y;
-        const w = train.w;
-        const h = train.h;
-
-        ctx.fillStyle = '#87a987';
-        ctx.strokeStyle = '#a3c2a3';
-        ctx.lineWidth = 1.5;
-
-        // badan kereta
-        ctx.beginPath();
-        ctx.roundRect ? ctx.roundRect(x, y, w, h, 6) : ctx.rect(x, y, w, h);
-        ctx.fill();
-        ctx.stroke();
-
-        // cabin atas
-        ctx.fillStyle = '#121614';
-        ctx.fillRect(x + w - 20, y - 10, 14, 12);
-
-        // cerobong
-        ctx.fillStyle = '#4a554a';
-        ctx.fillRect(x + 8, y - 8, 6, 8);
-
-        // jendela
-        ctx.fillStyle = '#121614';
-        ctx.fillRect(x + 18, y + 7, 10, 8);
-        ctx.fillRect(x + 32, y + 7, 10, 8);
-
-        // roda
-        ctx.fillStyle = '#0d100e';
-        const wheelY = y + h - 2;
-        ctx.beginPath();
-        ctx.arc(x + 12, wheelY, 6, 0, Math.PI * 2);
-        ctx.arc(x + 38, wheelY, 6, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      function drawObstacles() {
-        const gy = groundY();
-        obstacles.forEach(function (o) {
-          ctx.fillStyle = '#cbd5e1';
-          ctx.fillRect(o.x, gy - o.h, o.w, o.h);
-
-          // garis palang merah-putih
-          ctx.fillStyle = '#b85c5c';
-          for (let s = 0; s < o.h; s += 12) {
-            ctx.fillRect(o.x, gy - o.h + s, o.w, 5);
-          }
-        });
-      }
-
-      function draw() {
-        drawBackground();
-        drawObstacles();
-        drawTrain();
-      }
-
-      function loop(ts) {
-        if (!running) return;
-        if (lastTime === null) lastTime = ts;
-        const dt = Math.min(ts - lastTime, 40);
-        lastTime = ts;
-
-        update(dt);
-        draw();
-
-        if (running) {
-          rafId = requestAnimationFrame(loop);
-        }
-      }
-
-      function setupInitialFrame() {
-        resize();
-        train.x = 40;
-        train.y = groundY() - train.h;
-        draw();
-      }
-
-      // input handlers — tekan untuk mulai lompat, lepas untuk berhenti naik
-      canvas.addEventListener('mousedown', startHold);
-      window.addEventListener('mouseup', releaseHold);
-
-      canvas.addEventListener('touchstart', function (e) {
-        e.preventDefault();
-        startHold();
-      }, { passive: false });
-      window.addEventListener('touchend', releaseHold);
-
-      overlay.addEventListener('mousedown', startHold);
-      overlay.addEventListener('touchstart', function (e) {
-        e.preventDefault();
-        startHold();
-      }, { passive: false });
-
-      window.addEventListener('keydown', function (e) {
-        if (e.code === 'Space' || e.key === ' ') {
-          const rect = canvas.getBoundingClientRect();
-          const inView = rect.top < window.innerHeight && rect.bottom > 0;
-          if (inView) {
-            e.preventDefault();
-            if (!isHolding) startHold();
-          }
-        }
-      });
-      window.addEventListener('keyup', function (e) {
-        if (e.code === 'Space' || e.key === ' ') {
-          releaseHold();
-        }
-      });
-
-      let resizeTimer = null;
-      window.addEventListener('resize', function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () {
-          resize();
-          if (!running) {
-            train.y = groundY() - train.h;
-            draw();
-          }
-        }, 120);
-      });
-
-      setupInitialFrame();
-    })();
-  </script>
 
 </body></html>
